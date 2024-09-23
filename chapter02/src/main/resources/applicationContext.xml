@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="helloGreeter" class="org.momar.chapter02.HelloWorldGreeter" >
+        <property name="printStream" ref="printStream"></property>
+    </bean>
+    <bean id="baos" class="java.io.ByteArrayOutputStream"/>
+
+    <bean id="printStream" class="java.io.PrintStream">
+        <constructor-arg ref="baos"></constructor-arg>
+        <constructor-arg value="true"></constructor-arg>
+        <constructor-arg value="UTF-8"></constructor-arg>
+    </bean>
+</beans>
