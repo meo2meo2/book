@@ -2,6 +2,7 @@ package org.momar.chapter02;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -23,7 +24,7 @@ public class Chapter02ApplicationTests {
 
         }
         String data = out.toString(StandardCharsets.UTF_8);
-        assertEquals(data,"Hello World");
+        Assert.assertEquals(data,"Hello World");
 
     }
 
