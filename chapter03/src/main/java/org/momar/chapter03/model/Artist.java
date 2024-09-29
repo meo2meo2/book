@@ -17,6 +17,10 @@ public class Artist {
     String name;
     Map<String, Song> songs = new HashMap<>();
 
+    public Artist(String normalized) {
+    name = normalized;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(name);

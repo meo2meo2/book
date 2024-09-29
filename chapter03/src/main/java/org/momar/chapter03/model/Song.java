@@ -18,6 +18,10 @@ public class Song implements Comparable<Song> {
     private int votes;
     private String name;
 
+    public Song(String s) {
+        name = s;
+    }
+
 
     @Override
     public int compareTo(Song o) {
