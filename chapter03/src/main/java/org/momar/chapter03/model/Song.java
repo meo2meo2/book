@@ -46,4 +46,7 @@ public class Song implements Comparable<Song> {
     public int hashCode() {
         return Objects.hash(votes, name);
     }
+
+    public static class Artist {
+    }
 }
