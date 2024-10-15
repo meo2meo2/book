@@ -8,37 +8,36 @@ import lombok.Setter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.StringJoiner;
 
-@NoArgsConstructor
 @AllArgsConstructor
-@Getter
+@NoArgsConstructor
 @Setter
+@Getter
 public class Artist {
-    String name;
-    Map<String, Song> songs = new HashMap<>();
-
-    public Artist(String normalized) {
-    name = normalized;
-    }
+    private String name;
+    private Map<String, Song> songs = new HashMap<String, Song>();
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        return Objects.hash(getName());
     }
 
     @Override
     public boolean equals(Object obj) {
-        if(obj instanceof Artist) {
-            Artist other = (Artist) obj;
-            if(other.getName() == name){
-                return true;
-            }
-        }
-        return false;
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
+        return Objects.equals(getName(), ((Artist) obj).getName());
     }
+
 
     @Override
     public String toString() {
-        return "Artist [name=" + name + ", songs=" + songs + "]";
+        return String.format("Artist [name=%s, songs=%s]", name, songs);
     }
 }
+
+
+
+

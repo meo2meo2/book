@@ -1,56 +1,52 @@
 package org.momar.chapter03.model;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 
 import java.util.Objects;
-import java.util.StringJoiner;
 
-@Setter
-@Getter
-@NoArgsConstructor
 @AllArgsConstructor
-public class Song implements Comparable<Song> {
-
-    private int votes;
+@NoArgsConstructor
+@Getter
+@Setter
+public class Song implements Comparable<Song>{
     private String name;
-
-    public Song(String s) {
-        name = s;
-    }
-
+    private int votes;
 
     @Override
-    public int compareTo(Song o) {
-        int value = Integer.compare(o.getVotes(),votes);
-        if (value == 0) {
-            value = getName().compareTo(o.getName());
-        }
-        return value;
+    public int hashCode() {
+        return Objects.hash(getName());
     }
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", Song.class.getSimpleName() + "[","]")
-                .add("name='" + name + "'").add("votes='" + votes + "'").toString();
+        return String.format("Song [name=%s]", getName());
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Song song = (Song) o;
-        return votes == song.votes && Objects.equals(name, song.name);
+    public boolean equals(Object obj) {
+        if(this == obj) return true;
+        if(obj == null) return false;
+        if(obj instanceof Song) {
+            Song other = (Song) obj;
+            return Objects.equals(getName(), other.getName());
+        }
+        return false;
     }
+
+
 
     @Override
-    public int hashCode() {
-        return Objects.hash(votes, name);
-    }
+    public int compareTo(Song o) {
+        int value = Integer.compare(getVotes(), ((Song) o).getVotes());
+        if (value == 0) {
 
-    public static class Artist {
+            value = getName().compareTo(((Song) o).getName());
+        }
+
+        return value;
     }
 }

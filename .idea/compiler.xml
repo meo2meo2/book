@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -12,6 +13,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="chapter02_1" target="17" />
+      <module name="chapter03_01" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
